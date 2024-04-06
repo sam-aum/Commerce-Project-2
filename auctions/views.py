@@ -17,6 +17,16 @@ def createListings(request):
         return render(request, "auctions/create.html", {
             "categories": allCategories
         })
+    else:
+        # Get data from the form
+        title = request.POST["title"]
+        description = request.POST["description"]
+        image = request.POST["image"]
+        price = request.POST["price"]
+        category = request.POST["category"]
+        # get the user
+        currentUser = request.user
+        
 
 # User
 def login_view(request):
