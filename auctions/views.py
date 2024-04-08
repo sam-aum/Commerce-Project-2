@@ -8,7 +8,10 @@ from .models import User, Category, Listing
 
 
 def index(request):
-    return render(request, "auctions/index.html")
+    activeListings = Listing.objects.filter(isActive=True)
+    return render(request, "auctions/index.html", {
+        "listings": activeListings
+    })
 
 # Create Listings
 def createListings(request):
@@ -40,7 +43,6 @@ def createListings(request):
             user=currentUser
         )
 
-        #test
         # Insert the object into the database
         newListing.save()
 
