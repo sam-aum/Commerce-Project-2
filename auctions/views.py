@@ -26,17 +26,25 @@ def createListings(request):
         category = request.POST["category"]
         # get the user
         currentUser = request.user
+
+        # Get all content on categories
+        categoryData = Category.objects.get(categoryName=category)
+
         # create the listing
         newListing = Listing(
             title=title,
             description=description,
             image=image,
             price=float(price),
-            category=category,
+            category=categoryData,
             user=currentUser
         )
-
+        # Insert the object into the database
         newListing.save()
+
+        # Redirect to index page
+        return HttpResponseRedirect(reverse("index"))
+        
 
 # User
 def login_view(request):
