@@ -26,8 +26,15 @@ def createListings(request):
         category = request.POST["category"]
         # get the user
         currentUser = request.user
-        
-
+        # create the listing
+        newListing = Listing(
+            title=title,
+            description=description,
+            image=image,
+            price=float(price),
+            category=category,
+            user=currentUser
+        )
 # User
 def login_view(request):
     if request.method == "POST":
