@@ -11,8 +11,21 @@ def index(request):
     activeListings = Listing.objects.filter(isActive=True)
     allCategories = Category.objects.all()
     return render(request, "auctions/index.html", {
-        "listings": activeListings
+        "listings": activeListings,
+        "categories": allCategories
     })
+
+# display categories
+def displayCategories(request):
+    if request.method == "POST":
+        indexCategory = request.POST['category']
+        categoryName = Category.objects.get(categoryName=indexCategory)
+        activeListings = Listing.objects.filter(isActive=True, category=categoryName)
+        allCategories = Category.objects.all()
+        return render(request, "auctions/index.html", {
+            "listings": activeListings,
+            "categories": allCategories
+        })
 
 # Create Listings
 def createListings(request):
