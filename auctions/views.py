@@ -39,6 +39,8 @@ def createListings(request):
             category=categoryData,
             user=currentUser
         )
+
+        #test
         # Insert the object into the database
         newListing.save()
 
