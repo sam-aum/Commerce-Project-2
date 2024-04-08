@@ -35,6 +35,9 @@ def createListings(request):
             category=category,
             user=currentUser
         )
+
+        newListing.save()
+
 # User
 def login_view(request):
     if request.method == "POST":
