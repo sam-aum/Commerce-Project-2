@@ -1,3 +1,17 @@
 body {
-    padding: 10px;
+    padding: 30px;
+}
+
+.clamp {
+    display: -webkit-box;
+    -webkit-line-clamp: 2; /* Limit to 4 lines */
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.clamp-title {
+    display: -webkit-box;
+    -webkit-line-clamp: 1; /* Limit to 4 lines */
+    -webkit-box-orient: vertical;
+    overflow: hidden;
 }
