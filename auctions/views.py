@@ -15,11 +15,20 @@ def listing(request, id):
         "itemInList": itemInList
     })
 
+def watchListDisplay(request):
+    currentUser = request.user
+    listings = currentUser.listingWatchlist.all()
+    return render(request, "auctions/watchlist.html", {
+        "listings": listings
+    })
+
+
 def removeWatchList(request, id):
     listingData = Listing.objects.get(pk=id)
     currentUser = request.user
     listingData.watchlist.remove(currentUser)
-    return HttpResponseRedirect(reverse("listing",args=(id, )))
+    return HttpResponseRedirect(reverse("listing", args=(id, )))
+
 
 def addWatchList(request, id):
     listingData = Listing.objects.get(pk=id)
