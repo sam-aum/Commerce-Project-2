@@ -22,7 +22,6 @@ def watchListDisplay(request):
         "listings": listings
     })
 
-
 def removeWatchList(request, id):
     listingData = Listing.objects.get(pk=id)
     currentUser = request.user
@@ -92,6 +91,12 @@ def createListings(request):
         # Redirect to index page
         return HttpResponseRedirect(reverse("index"))
         
+
+# Add Comment
+def addComment(request):
+    return
+
+
 
 # User
 def login_view(request):
