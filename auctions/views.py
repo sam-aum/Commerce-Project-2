@@ -8,7 +8,24 @@ from .models import User, Category, Listing
 
 
 def listing(request, id):
-    return render(request, "auctions/listing.html")
+    listingData = Listing.objects.get(pk=id)
+    itemInList = request.user in listingData.watchlist.all()
+    return render(request, "auctions/listing.html", {
+        "listing": listingData,
+        "itemInList": itemInList
+    })
+
+def removeWatchList(request, id):
+    listingData = Listing.objects.get(pk=id)
+    currentUser = request.user
+    listingData.watchlist.remove(currentUser)
+    return HttpResponseRedirect(reverse("listing",args=(id, )))
+
+def addWatchList(request, id):
+    listingData = Listing.objects.get(pk=id)
+    currentUser = request.user
+    listingData.watchlist.add(currentUser)
+    return HttpResponseRedirect(reverse("listing",args=(id, )))
 
 def index(request):
     activeListings = Listing.objects.filter(isActive=True)
