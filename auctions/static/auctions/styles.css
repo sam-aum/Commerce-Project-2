@@ -15,3 +15,7 @@ body {
     -webkit-box-orient: vertical;
     overflow: hidden;
 }
+
+.form-control {
+    width: 500px;
+}
