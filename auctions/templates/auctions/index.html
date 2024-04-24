@@ -3,18 +3,6 @@
 {% block body %}
     <h2>Active Listings</h2>
 
-    <form action="{% url 'displayCategories' %}" method="POST" class="my-4">
-        {% csrf_token %}
-        <label for="category">Choose a category:</label>
-        <select name="category" id="category">
-            {% for category in categories %}
-            <option value="{{ category }}">{{ category }}</option>
-            {% endfor %}
-        </select>
-      
-        <button type="submit" class="btn btn-primary">Submit</button>
-    </form>
-
     <div class="row mx-3">
         {% for listing in listings %}
             <div class="card mx-3 my-4" style="width: 17rem; border: none;">

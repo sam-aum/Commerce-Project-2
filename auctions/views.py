@@ -1,7 +1,7 @@
 from django.contrib.auth import authenticate, login, logout
 from django.db import IntegrityError
-from django.http import HttpResponse, HttpResponseRedirect
-from django.shortcuts import render
+from django.http import HttpResponse, HttpResponseRedirect, HttpResponseBadRequest
+from django.shortcuts import render, redirect
 from django.urls import reverse
 
 from .models import User, Category, Listing, Comment
@@ -44,16 +44,29 @@ def index(request):
     })
 
 # display categories
-def displayCategories(request):
-    if request.method == "POST":
-        indexCategory = request.POST['category']
-        categoryName = Category.objects.get(categoryName=indexCategory)
-        activeListings = Listing.objects.filter(isActive=True, category=categoryName)
-        allCategories = Category.objects.all()
-        return render(request, "auctions/index.html", {
-            "listings": activeListings,
-            "categories": allCategories
-        })
+# def displayCategories(request):
+#     if request.method == "POST":
+#         indexCategory = request.POST['category']
+#         category = Category.objects.get(categoryName=indexCategory)
+#         activeListings = Listing.objects.filter(isActive=True, category=category)
+#         allCategories = Category.objects.all()
+#         return render(request, "auctions/index.html", {
+#             "listings": activeListings,
+#             "categories": allCategories
+#         })
+
+#     return HttpResponseRedirect('/')
+
+# display categories
+def displayCategories(request, category_id):
+    category = Category.objects.get(pk=category_id)
+    activeListings = Listing.objects.filter(isActive=True, category=category)
+    allCategories = Category.objects.all()
+    return render(request, "auctions/index.html", {
+        "listings": activeListings,
+        "categories": allCategories
+    })
+
 
 # Create Listings
 def createListings(request):
