@@ -114,7 +114,7 @@ def addComment(request, id):
     newComment = Comment(
         commenter=currentUser,
         listing=listingData,
-        comment=comment
+        comment=comment,
     )
 
     return HttpResponseRedirect(reverse("listing", args=(id, )))
