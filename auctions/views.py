@@ -11,10 +11,13 @@ def listing(request, id):
     listingData = Listing.objects.get(pk=id)
     itemInList = request.user in listingData.watchlist.all()
     allComments = Comment.objects.filter(listing=listingData)
+    currentBid = Bid.objects.filter(listing=listingData)
+
     return render(request, "auctions/listing.html", {
         "listing": listingData,
         "itemInList": itemInList,
         "allComments": allComments,
+        "currentBid": currentBid,
     })
 
 def watchListDisplay(request):
@@ -105,7 +108,24 @@ def createListings(request):
 
         # Redirect to index page
         return HttpResponseRedirect(reverse("index"))
-        
+
+
+# Add Bid 
+def addBid(request, id):
+    makeBid = request.POST["bid"]
+    listingData = Listing.objects.get(pk=id)
+    currentUser = request.user
+
+    newBid = Bid(
+        bidPrice=makeBid,
+        listing=listingData,
+        bidder=currentUser,
+    )
+
+    newBid.save()
+
+    return HttpResponseRedirect(reverse("listing", args=(id, )))
+
 
 # Add Comment
 def addComment(request, id):

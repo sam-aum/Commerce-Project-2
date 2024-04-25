@@ -35,6 +35,7 @@ class Comment(models.Model):
     
 class Bid(models.Model):
     bidder = models.ForeignKey(User, on_delete=models.CASCADE, blank=True, null=True, related_name="bidder")
+    listing = models.ForeignKey(Listing, on_delete=models.CASCADE, blank=True, null=True, related_name="listingBid")
     bidPrice = models.FloatField()
 
     def __str__(self):
