@@ -119,15 +119,26 @@ def addBid(request, id):
     listingData = Listing.objects.get(pk=id)
     currentUser = request.user
 
-    newBid = Bid(
-        bidPrice=float(makeBid),
-        listing=listingData,
-        bidder=currentUser,
-    )
+    if float(makeBid) > listingData.price:
+        newBid = Bid(
+            bidPrice=float(makeBid),
+            listing=listingData,
+            bidder=currentUser,
+        )
 
-    newBid.save()
+        newBid.save()
+        return render(request, "auctions/listing.html", {
+            "listing": listingData,
+            "message": "Bid successful",
+            "updated": True
+        })
+    else:
+        return render(request, "auctions/listing.html", {
+            "listing": listingData,
+            "message": "Bid failed",
+            "updated": False
+        })
 
-    return HttpResponseRedirect(reverse("listing", args=(id, )))
 
 
 # Add Comment
