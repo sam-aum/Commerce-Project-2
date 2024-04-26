@@ -21,6 +21,23 @@ body {
 }
 
 
+
+.title {
+    color: rgb(16, 16, 16);
+    font-family: "Lora", serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+}
+
+/* .lora-<uniquifier> {
+    font-family: "Lora", serif;
+    font-optical-sizing: auto;
+    font-weight: <weight>;
+    font-style: normal;
+  } */
+
+
 /* Listing */
 .listing {
     border: 1px solid #ccc;
