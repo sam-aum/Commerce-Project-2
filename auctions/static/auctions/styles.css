@@ -20,22 +20,47 @@ body {
     width: 500px;
 }
 
-
-
+/* NavBar */
 .title {
     color: rgb(16, 16, 16);
     font-family: "Lora", serif;
-    font-optical-sizing: auto;
     font-weight: 400;
-    font-style: normal;
 }
 
-/* .lora-<uniquifier> {
-    font-family: "Lora", serif;
-    font-optical-sizing: auto;
-    font-weight: <weight>;
-    font-style: normal;
-  } */
+.nav-link {
+    color: #707070 !important;
+    font-size: 18px !important;
+    
+}
+
+.nav-link:hover {
+    color: #000 !important; /* Change color on hover */
+    font-weight: bold;
+}
+
+.dropdown-item {
+    color: #707070 !important;
+}
+/* .nav {
+    color: #707070 !important;
+    display: flex;
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.nav-item {
+    margin-right: 10px;
+}
+
+.nav-link {
+    color: inherit;
+    text-decoration: none;
+}
+
+.nav-link:hover {
+    color: #000;
+} */
 
 
 /* Listing */
