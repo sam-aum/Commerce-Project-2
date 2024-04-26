@@ -13,7 +13,7 @@ def listing(request, id):
     itemInList = request.user in listingData.watchlist.all()
     allComments = Comment.objects.filter(listing=listingData)
     try:
-        currentBid = Bid.objects.get(listing=listingData)
+        currentBid = Bid.objects.filter(listing=listingData).latest('bidPrice')
     except Bid.DoesNotExist:
         currentBid = None
 
@@ -115,71 +115,43 @@ def createListings(request):
 
 
 # Add Bid 
-# def addBid(request, id):
-#     makeBid = request.POST["bid"]
-#     listingData = Listing.objects.get(pk=id)
-#     currentUser = request.user
-#     itemInList = request.user in listingData.watchlist.all()
-#     allComments = Comment.objects.filter(listing=listingData)
-#     try:
-#         currentBid = Bid.objects.get(listing=listingData)
-#     except Bid.DoesNotExist:
-#         currentBid = None
-
-#     if float(makeBid) > listingData.price:
-
-#         newBid = Bid(
-#             bidPrice=float(makeBid),
-#             listing=listingData,
-#             bidder=currentUser,
-#         )
-
-#         newBid.save()
-
-#         return render(request, "auctions/listing.html", {
-#             "listing": listingData,
-#             "message": "Bid successful",
-#             "updated": True,
-#             "allComments": allComments,
-#             "currentBid": currentBid,
-#             "itemInList": itemInList,
-#         })
-
 def addBid(request, id):
     makeBid = float(request.POST["bid"])
     listingData = Listing.objects.get(pk=id)
     currentUser = request.user
 
-    if makeBid > listingData.price:
-        newBid = Bid(
-            bidPrice=makeBid,
-            listing=listingData,
-            bidder=currentUser,
-        )
-        newBid.save()
-        messages.success(request, "Bid placed successfully.")
+    try:
+        # Retrieve the current highest bid for the listing
+        currentHighestBid = Bid.objects.filter(listing=listingData).latest('bidPrice')
+    except Bid.DoesNotExist:
+        currentHighestBid = None
 
+    if currentHighestBid is None:
+        if makeBid >= listingData.price:
+            newBid = Bid(
+                bidPrice=makeBid,
+                listing=listingData,
+                bidder=currentUser,
+            )
+            newBid.save()
+            messages.success(request, "Bid placed successfully.")
+        else:
+            messages.error(request, "Bid must be higher than or equal to the listing price. Bid not placed.")
     else:
-        messages.error(request, "Bid must be higher than the listing price. Bid not placed.")
-
-
+        # There is a current highest bid, so the new bid must be higher than both the listing price and the current highest bid
+        if makeBid > currentHighestBid.bidPrice:
+            newBid = Bid(
+                bidPrice=makeBid,
+                listing=listingData,
+                bidder=currentUser,
+            )
+            newBid.save()
+            messages.success(request, "Bid placed successfully.")
+        else:
+            messages.error(request, "Bid must be higher than the current highest bid. Bid not placed.")
     return redirect("listing", id=id)
 
-# def addBid(request, id):
-#     makeBid = request.POST["bid"]
-#     listingData = Listing.objects.get(pk=id)
-#     currentUser = request.user
-    
 
-#     newBid = Bid(
-#         bidPrice=float(makeBid),
-#         listing=listingData,
-#         bidder=currentUser,
-#     )
-
-#     newBid.save()
-
-#     return HttpResponseRedirect(reverse("listing", args=(id, )))
 
 
 # Add Comment
