@@ -13,7 +13,10 @@ def listing(request, id):
     itemInList = request.user in listingData.watchlist.all()
     allComments = Comment.objects.filter(listing=listingData)
     isOwner = request.user.username == listingData.user.username 
-
+    try:
+        highestBidder = Bid.objects.filter(listing=listingData).latest('bidder')
+    except Bid.DoesNotExist:
+        highestBidder = None
     try:
         currentBid = Bid.objects.filter(listing=listingData).latest('bidPrice')
     except Bid.DoesNotExist:
@@ -25,6 +28,7 @@ def listing(request, id):
         "allComments": allComments,
         "currentBid": currentBid,
         "isOwner": isOwner,
+        "highestBidder": highestBidder,
     })
 
 def watchListDisplay(request):
