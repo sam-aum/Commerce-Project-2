@@ -3,6 +3,7 @@ from django.db import IntegrityError
 from django.http import HttpResponse, HttpResponseRedirect, HttpResponseBadRequest
 from django.shortcuts import render, redirect
 from django.urls import reverse
+from django.contrib import messages
 
 from .models import User, Category, Listing, Comment, Bid
 
@@ -156,11 +157,11 @@ def addBid(request, id):
             bidder=currentUser,
         )
         newBid.save()
-        message = "Bid placed successfully."
-        updated = True
+        messages.success(request, "Bid placed successfully.")
+
     else:
-        message = "Bid must be higher than the listing price. Bid not placed."
-        updated = False
+        messages.error(request, "Bid must be higher than the listing price. Bid not placed.")
+
 
     return redirect("listing", id=id)
 
