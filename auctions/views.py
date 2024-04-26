@@ -12,6 +12,8 @@ def listing(request, id):
     listingData = Listing.objects.get(pk=id)
     itemInList = request.user in listingData.watchlist.all()
     allComments = Comment.objects.filter(listing=listingData)
+    isOwner = request.user.username == listingData.user.username 
+
     try:
         currentBid = Bid.objects.filter(listing=listingData).latest('bidPrice')
     except Bid.DoesNotExist:
@@ -22,6 +24,7 @@ def listing(request, id):
         "itemInList": itemInList,
         "allComments": allComments,
         "currentBid": currentBid,
+        "isOwner": isOwner,
     })
 
 def watchListDisplay(request):
@@ -51,20 +54,6 @@ def index(request):
         "listings": activeListings,
         "categories": allCategories
     })
-
-# display categories
-# def displayCategories(request):
-#     if request.method == "POST":
-#         indexCategory = request.POST['category']
-#         category = Category.objects.get(categoryName=indexCategory)
-#         activeListings = Listing.objects.filter(isActive=True, category=category)
-#         allCategories = Category.objects.all()
-#         return render(request, "auctions/index.html", {
-#             "listings": activeListings,
-#             "categories": allCategories
-#         })
-
-#     return HttpResponseRedirect('/')
 
 # display categories
 def displayCategories(request, category_id):
@@ -152,8 +141,6 @@ def addBid(request, id):
     return redirect("listing", id=id)
 
 
-
-
 # Add Comment
 def addComment(request, id):
     currentUser = request.user
@@ -169,6 +156,18 @@ def addComment(request, id):
     newComment.save()
 
     return HttpResponseRedirect(reverse("listing", args=(id, )))
+
+
+# Close Auction
+def closeAuction(request, id):
+    listingData = Listing.objects.get(pk=id)
+    listingData.isActive = False
+    listingData.save()
+    owner = request.user.username == listingData.owner.username
+
+    return render(request)
+
+
 
 # User
 def login_view(request):
