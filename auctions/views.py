@@ -163,7 +163,6 @@ def closeAuction(request, id):
     listingData = Listing.objects.get(pk=id)
     listingData.isActive = False
     listingData.save()
-    owner = request.user.username == listingData.user.username
 
     messages.success(request, "Auction is now closed")
     return redirect("listing", id=id)
