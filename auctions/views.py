@@ -114,31 +114,71 @@ def createListings(request):
 
 
 # Add Bid 
+# def addBid(request, id):
+#     makeBid = request.POST["bid"]
+#     listingData = Listing.objects.get(pk=id)
+#     currentUser = request.user
+#     itemInList = request.user in listingData.watchlist.all()
+#     allComments = Comment.objects.filter(listing=listingData)
+#     try:
+#         currentBid = Bid.objects.get(listing=listingData)
+#     except Bid.DoesNotExist:
+#         currentBid = None
+
+#     if float(makeBid) > listingData.price:
+
+#         newBid = Bid(
+#             bidPrice=float(makeBid),
+#             listing=listingData,
+#             bidder=currentUser,
+#         )
+
+#         newBid.save()
+
+#         return render(request, "auctions/listing.html", {
+#             "listing": listingData,
+#             "message": "Bid successful",
+#             "updated": True,
+#             "allComments": allComments,
+#             "currentBid": currentBid,
+#             "itemInList": itemInList,
+#         })
+
 def addBid(request, id):
-    makeBid = request.POST["bid"]
+    makeBid = float(request.POST["bid"])
     listingData = Listing.objects.get(pk=id)
     currentUser = request.user
 
-    if float(makeBid) > listingData.price:
+    if makeBid > listingData.price:
         newBid = Bid(
-            bidPrice=float(makeBid),
+            bidPrice=makeBid,
             listing=listingData,
             bidder=currentUser,
         )
-
         newBid.save()
-        return render(request, "auctions/listing.html", {
-            "listing": listingData,
-            "message": "Bid successful",
-            "updated": True
-        })
+        message = "Bid placed successfully."
+        updated = True
     else:
-        return render(request, "auctions/listing.html", {
-            "listing": listingData,
-            "message": "Bid failed",
-            "updated": False
-        })
+        message = "Bid must be higher than the listing price. Bid not placed."
+        updated = False
 
+    return redirect("listing", id=id)
+
+# def addBid(request, id):
+#     makeBid = request.POST["bid"]
+#     listingData = Listing.objects.get(pk=id)
+#     currentUser = request.user
+    
+
+#     newBid = Bid(
+#         bidPrice=float(makeBid),
+#         listing=listingData,
+#         bidder=currentUser,
+#     )
+
+#     newBid.save()
+
+#     return HttpResponseRedirect(reverse("listing", args=(id, )))
 
 
 # Add Comment
