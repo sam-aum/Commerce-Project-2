@@ -39,4 +39,5 @@ class Bid(models.Model):
     bidPrice = models.FloatField()
 
     def __str__(self):
-        return self.bidPrice
+        return f"{self.bidPrice:.2f}"
+    

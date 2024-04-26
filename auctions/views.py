@@ -11,7 +11,10 @@ def listing(request, id):
     listingData = Listing.objects.get(pk=id)
     itemInList = request.user in listingData.watchlist.all()
     allComments = Comment.objects.filter(listing=listingData)
-    currentBid = Bid.objects.filter(listing=listingData)
+    try:
+        currentBid = Bid.objects.get(listing=listingData)
+    except Bid.DoesNotExist:
+        currentBid = None
 
     return render(request, "auctions/listing.html", {
         "listing": listingData,
@@ -117,7 +120,7 @@ def addBid(request, id):
     currentUser = request.user
 
     newBid = Bid(
-        bidPrice=makeBid,
+        bidPrice=float(makeBid),
         listing=listingData,
         bidder=currentUser,
     )
