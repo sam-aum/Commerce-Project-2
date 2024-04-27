@@ -2,6 +2,30 @@ body {
     padding: 50px 200px;
 }
 
+/* Card */
+.card-body a.card-title,
+.card-body .listing-price {
+    text-decoration: none !important;
+}
+
+.card {
+    transition: box-shadow 0.3s ease-in-out; /* Add transition effect */
+}
+
+.card:hover {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* Add shadow on hover */
+}
+
+.card-img-top {
+    padding-top: 10px; /* Adjust the value as needed */
+}
+
+.card-body {
+    color: #707070 !important;
+
+}
+
+
 .clamp {
     display: -webkit-box;
     -webkit-line-clamp: 2; /* Limit to 4 lines */
@@ -20,6 +44,10 @@ body {
     width: 500px;
 }
 
+
+
+
+
 /* NavBar */
 .title {
     color: rgb(16, 16, 16);
@@ -29,7 +57,7 @@ body {
 
 .nav-link {
     color: #707070 !important;
-    font-size: 16px !important;
+    font-size: 15px !important;
     font-family: "Raleway", sans-serif;
     font-optical-sizing: auto;
     font-weight: 300;
@@ -44,7 +72,7 @@ body {
 
 .dropdown-item {
     color: #707070 !important;
-    font-size: 18px !important;
+    font-size: 15px !important;
     font-family: "Raleway", sans-serif;
     font-optical-sizing: auto;
     font-weight: 300;
@@ -61,7 +89,7 @@ body {
 .listing-info {
     margin-right: 50px; 
     align-self: flex-start; /* Align info div with the top of the container */
-
+    padding-top: 50px;
 }
 
 .listing-container{
