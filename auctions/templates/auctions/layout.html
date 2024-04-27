@@ -101,8 +101,8 @@
                     <li class="nav-item">
                         <p class="nav-link mb-0">|</p> <!-- Use pipe character here -->
                     </li>
-                    <li class="nav-item">
-                        <p class="nav-link mb-0">Signed in as <strong>{{ user.username }}</strong>.</p>
+                    <li class="nav-item nav-username">
+                        <p class="nav-link mb-0">Signed in as <strong !important>{{ user.username }}</strong>.</p>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{% url 'logout' %}">Log Out</a>
