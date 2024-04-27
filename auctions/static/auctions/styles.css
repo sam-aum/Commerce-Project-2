@@ -1,5 +1,5 @@
 body {
-    padding: 30px;
+    padding: 50px 200px;
 }
 
 .clamp {
@@ -29,7 +29,7 @@ body {
 
 .nav-link {
     color: #707070 !important;
-    font-size: 18px !important;
+    font-size: 16px !important;
     font-family: "Raleway", sans-serif;
     font-optical-sizing: auto;
     font-weight: 300;
@@ -50,64 +50,31 @@ body {
     font-weight: 300;
     font-style: normal;
 }
-/* .nav {
-    color: #707070 !important;
-    display: flex;
-    list-style-type: none;
-    padding: 0;
-    margin: 0;
-}
-
-.nav-item {
-    margin-right: 10px;
-}
-
-.nav-link {
-    color: inherit;
-    text-decoration: none;
-}
-
-.nav-link:hover {
-    color: #000;
-} */
 
 
 /* Listing */
-.listing {
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    padding: 20px;
-    margin-bottom: 20px;
+.listing-container {
+    display: flex;
+    align-items: flex-start; /* Align children at the top */
+}
+
+.listing-info {
+    margin-right: 50px; 
+    align-self: flex-start; /* Align info div with the top of the container */
+
+}
+
+.listing-container{
+    padding-top: 50px;
+}
+
+.image-detail {
+    margin-right: 50px;
+    margin-left: 50px;
+    margin-bottom:50px;
 }
 
 .listing-title {
-    font-size: 24px;
+    font-family: "Lora", serif;
     margin-bottom: 10px;
 }
-
-.listing-image {
-    max-width: 100%;
-    height: auto;
-    margin-bottom: 10px;
-}
-
-.listing-description {
-    font-size: 16px;
-    margin-bottom: 10px;
-}
-
-.listing-owner {
-    font-style: italic;
-    color: #666;
-    margin-bottom: 5px;
-}
-
-.listing-price {
-    font-size: 20px;
-    color: #009688; /* or any other color you prefer */
-    margin-top: 10px;
-}
-
-/* Alert */
-
-/* Comments */

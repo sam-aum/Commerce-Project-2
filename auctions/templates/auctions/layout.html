@@ -78,15 +78,15 @@
             <h1 class="title">CS50W COMMERCE</h1>
             <ul class="nav">
                 <li class="nav-item">
-                    <a class="nav-link" href="{% url 'index' %}">Active Listings</a>
+                    <a class="nav-link" href="{% url 'index' %}">ALL LISTINGS</a>
                 </li>
                 {% if user.is_authenticated %}
                     <li class="nav-item">
-                        <a class="nav-link" href="{% url 'watchlist' %}">Watchlist</a>
+                        <a class="nav-link" href="{% url 'watchlist' %}">WATCHLIST</a>
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="categoriesDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            Categories
+                            CATEGORIES
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="categoriesDropdown">
                             {% for category in categories %}
@@ -95,7 +95,7 @@
                         </ul>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{% url 'create' %}">Create Listing</a>
+                        <a class="nav-link" href="{% url 'create' %}">CREATE LISTING</a>
                     </li>
                     <li class="nav-item">
                         <p class="nav-link mb-0">|</p> <!-- Use pipe character here -->
