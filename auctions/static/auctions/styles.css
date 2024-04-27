@@ -30,6 +30,10 @@ body {
 .nav-link {
     color: #707070 !important;
     font-size: 18px !important;
+    font-family: "Raleway", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 300;
+    font-style: normal;
     
 }
 
@@ -40,6 +44,11 @@ body {
 
 .dropdown-item {
     color: #707070 !important;
+    font-size: 18px !important;
+    font-family: "Raleway", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 300;
+    font-style: normal;
 }
 /* .nav {
     color: #707070 !important;
