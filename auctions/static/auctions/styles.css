@@ -144,6 +144,8 @@ body {
     margin-bottom: 50px;
 }
 
+
+/* Listing Info */
 .listing-title {
     font-family: "Lora", serif;
     margin-bottom: 10px;
@@ -158,16 +160,27 @@ body {
     font-size: 18px;
 }
 
+
+/* Bid and Price */
+.listing-bid-container {
+    font-family: "Raleway", sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+    font-size: 18px;
+}
+
 .listing-price,
 .listing-bid {
     font-family: "Raleway", sans-serif;
     font-optical-sizing: auto;
     font-style: normal;
+    
 }
 
 .listing-bid-text, 
 .listing-price-text {
     font-weight: bold;
+
 }
 
 .listing-price-text {
@@ -179,3 +192,17 @@ body {
 }
 
 
+
+
+
+/* Hide the up and down arrows for number input */
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/* Optionally, you can also set a specific width for the input field */
+input[type="number"] {
+    width: 300px; /* Adjust as needed */
+}

@@ -113,9 +113,11 @@ def createListings(request):
 
 # Add Bid 
 def addBid(request, id):
-    makeBid = float(request.POST["bid"])
-    listingData = Listing.objects.get(pk=id)
-    currentUser = request.user
+    if request.method == "POST":
+        try:
+            makeBid = float(request.POST.get("bid", 0))
+        except ValueError:
+            return redirect("listing", id=id)
 
     try:
         # Retrieve the current highest bid for the listing
