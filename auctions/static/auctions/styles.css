@@ -130,9 +130,8 @@ body {
 }
 
 .listing-info {
-    margin-right: 50px; 
+    margin-right: 100px; 
     align-self: flex-start; /* Align info div with the top of the container */
-    padding-top: 50px;
 }
 
 .listing-container{
@@ -140,12 +139,43 @@ body {
 }
 
 .image-detail {
-    margin-right: 50px;
-    margin-left: 50px;
-    margin-bottom:50px;
+    margin-right: 125px;
+    margin-left: 125px;
+    margin-bottom: 50px;
 }
 
 .listing-title {
     font-family: "Lora", serif;
     margin-bottom: 10px;
 }
+.listing-seller{
+    font-family: "Raleway", sans-serif;
+    font-size: 18px;
+}
+
+.listing-description {
+    font-family: "Anek Devanagari";
+    font-size: 18px;
+}
+
+.listing-price,
+.listing-bid {
+    font-family: "Raleway", sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+}
+
+.listing-bid-text, 
+.listing-price-text {
+    font-weight: bold;
+}
+
+.listing-price-text {
+    margin-right: 20px;
+}
+
+.listing-bid-text{
+    margin-right: 24px;
+}
+
+
