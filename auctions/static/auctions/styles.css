@@ -296,17 +296,11 @@ input[type="number"]::-webkit-outer-spin-button {
     padding-top: 10px;
 }
 
-.comments{
-    margin-top: 5%;
-    margin-left: 20px;
-}
-
 .comment {
     border: 1px solid rgba(16, 46, 46, 1);
     border-radius: 5px;
     padding: 15px;
     padding-left: 30px;
-    margin-bottom: 20px;
     background-color: #f8f9fa;
 }
 
@@ -323,46 +317,16 @@ h1,h4{
     font-weight: bold;
 }
 
-
-.comment-button {
-    padding: 10px 20px;
-    background-color: #424a4e; /* Grayish color */
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    width: 100%;
-}
-
-
-
-/* new */
-
-
-
-/* .comment span {
-    color: #6c757d; 
-    font-size: 0.9rem;
-    margin-right: 10px;
-} */
-
 .comment p {
     color: #495057; /* Dark text color */
     margin-top: 10px;
 }
 
-.comment-button {
-    padding: 10px 20px;
-    background-color: #6c757d; /* Grayish color */
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    width: 100%;
-}
 
-.comment-button:hover {
-    background-color: #5a6268; /* Darker gray on hover */
-}
+
+
+
+
+
 
 
