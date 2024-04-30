@@ -164,7 +164,7 @@ body {
 
 /* Bid and Price */
 .listing-bid-container {
-    font-family: "Raleway", sans-serif;
+    font-family: "Oswald";
     font-optical-sizing: auto;
     font-style: normal;
     font-size: 18px;
@@ -172,7 +172,7 @@ body {
 
 .listing-price,
 .listing-bid {
-    font-family: "Raleway", sans-serif;
+    font-family: "Oswald";
     font-optical-sizing: auto;
     font-style: normal;
     
