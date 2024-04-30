@@ -76,8 +76,8 @@ body {
     overflow: hidden;
 }
 
-.form-control {
-    width: 500px;
+.create-form {
+    margin-right: 700px;
 }
 
 .dropdown-item {
