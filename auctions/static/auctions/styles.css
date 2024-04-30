@@ -151,6 +151,7 @@ body {
 .listing-description {
     font-family: "Anek Devanagari";
     font-size: 18px;
+    padding: 30px 0px;
 }
 
 
@@ -184,7 +185,10 @@ body {
     margin-right: 24px;
 }
 
-
+.price-bid-container {
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
 
 
 
@@ -195,7 +199,42 @@ input[type="number"]::-webkit-outer-spin-button {
     margin: 0;
 }
 
-/* Optionally, you can also set a specific width for the input field */
-input[type="number"] {
-    width: 300px; /* Adjust as needed */
+
+/* CSS for Bid Input and Button */
+.bid-form {
+    display: flex;
+    flex-direction: column;
+    margin-top: 20px;
 }
+
+.bid-input {
+    margin-bottom: 10px;
+}
+
+.bid-button {
+    margin-top: auto; /* Push the button to the bottom */
+}
+
+.form-control {
+    padding: 10px;
+    border: 1px solid #ced4da;
+    border-radius: 5px;
+    outline: none;
+    width: 100% !important;
+    box-sizing: border-box; /* Include padding and border in the width calculation */
+}
+
+.btn-secondary {
+    padding: 10px 20px;
+    background-color: #424a4e; /* Grayish color */
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
+}
+
+.btn-secondary:hover {
+    background-color: #131414; /* Darker gray on hover */
+}
+
