@@ -12,14 +12,11 @@ body {
 
 .card {
     transition: box-shadow 0.3s ease-in-out; /* Add transition effect */
+    padding: 10px;
 }
 
 .card:hover {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* Add shadow on hover */
-}
-
-.card-img-top {
-    padding-top: 10px; /* Adjust the value as needed */
 }
 
 .card-body {
@@ -27,7 +24,15 @@ body {
 
 }
 
+.card-image-container {
+    width: 100%;
+    height: 17rem;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    overflow: hidden;
 
+}
 
 /* NavBar */
 .title {

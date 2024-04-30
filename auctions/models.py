@@ -13,7 +13,7 @@ class Category(models.Model):
 
 class Listing(models.Model):
     title = models.CharField(max_length=50)
-    description = models.CharField(max_length=500)
+    description = models.CharField(max_length=1000)
     image = models.CharField(max_length=1000)
     price = models.FloatField()
     isActive = models.BooleanField(default=True)
