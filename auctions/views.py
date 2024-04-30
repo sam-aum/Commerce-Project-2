@@ -113,6 +113,9 @@ def createListings(request):
 
 # Add Bid 
 def addBid(request, id):
+    listingData = Listing.objects.get(pk=id)
+    currentUser = request.user
+    
     if request.method == "POST":
         try:
             makeBid = float(request.POST.get("bid", 0))

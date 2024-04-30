@@ -213,6 +213,7 @@ input[type="number"]::-webkit-outer-spin-button {
 
 .bid-button {
     margin-top: auto; /* Push the button to the bottom */
+    margin-bottom: 10px;
 }
 
 .form-control {
@@ -238,3 +239,36 @@ input[type="number"]::-webkit-outer-spin-button {
     background-color: #131414; /* Darker gray on hover */
 }
 
+
+/* Watchlist Button */
+.watchlist-button {
+    padding: 10px 20px; /* Adjust padding as needed */
+    background-color: #fff; /* White background */
+    color: #6c757d; /* Grayish color for text */
+    border: 1px solid #6c757d; /* Grayish border */
+    border-radius: 5px;
+    width: 100%; /* Make the button fill the width of its container */
+    margin-top: auto; /* Push the button to the bottom */
+    margin-bottom: 10px;
+}
+
+.watchlist-button:hover {
+    background-color: #f8f9fa; /* Light gray background on hover */
+    color: #495057; /* Dark gray text on hover */
+    border-color: #6c757d; /* Grayish border color on hover */
+}
+
+
+/* Close Auction Button */
+.close-auction-button {
+    padding: 10px 20px; /* Adjust padding as needed */
+    background-color: #b91b28; /* Grayish color */
+    color: #fff; /* White text */
+    border: none;
+    border-radius: 5px;
+    width: 100%; /* Make the button fill the width of its container */
+}
+
+.close-auction-button:hover {
+    background-color: #e60a2e; /* Darker gray on hover */
+}
