@@ -25,7 +25,6 @@ class Listing(models.Model):
         return self.title
 
 
-
 class Comment(models.Model):
     commenter = models.ForeignKey(User, on_delete=models.CASCADE, blank=True, null=True, related_name="userComment")
     listing = models.ForeignKey(Listing, on_delete=models.CASCADE, blank=True, null=True, related_name="listingComment")
