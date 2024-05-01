@@ -17,12 +17,13 @@ class Listing(models.Model):
     image = models.CharField(max_length=1000)
     price = models.FloatField()
     isActive = models.BooleanField(default=True)
-    user = models.ForeignKey(User, on_delete=models.CASCADE, blank=True, null=True, related_name="user")
-    category = models.ForeignKey(Category, on_delete=models.CASCADE, blank=True, null=True, related_name="category")
-    watchlist = models.ManyToManyField(User, blank=True, null=True, related_name="listingWatchlist")
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="user")
+    category = models.ForeignKey(Category, on_delete=models.CASCADE, related_name="category")
+    watchlist = models.ManyToManyField(User, related_name="listingWatchlist")
 
     def __str__(self):
         return self.title
+
 
 
 class Comment(models.Model):
