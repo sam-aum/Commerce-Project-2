@@ -7,9 +7,8 @@ This is Project 1 in the HarvardX course CS50W - CS50's Web Programming with Pyt
 ### CS50W's Project 2 specifications
 [CS50W Project 2](https://cs50.harvard.edu/web/2020/projects/2/commerce/)
 
-
-
 #### Description:
+This application is an eBay-like e-commerce auction site that will allow users to post auction listings, place bids on listings, comment on those listings, and add listings to a “watchlist.”
 
 * Models: Your application should have at least three models in addition to the User model: one for auction listings, one for bids, and one for comments made on auction listings. It’s up to you to decide what fields each model should have, and what the types of those fields should be. You may have additional models if you would like.
 
