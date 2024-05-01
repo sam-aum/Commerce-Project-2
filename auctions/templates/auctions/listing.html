@@ -1,0 +1,153 @@
+{% extends "auctions/layout.html" %}
+{% block body %}
+    <!-- The Listing -->
+    <div class="listing-container">
+        <div class="image-container">
+            <img src="{{ listing.image }}" alt="{{ listing.title }}" class="image-detail">
+        </div>
+    
+        <div class="info-container">
+            <div class="listing-info">
+                <div class="listing-items">
+                    <h2 class="listing-title">{{ listing.title }}</h2>
+                    <p class="listing-seller">Seller: {{ listing.user }}</p>
+                    <p class="listing-description">{{ listing.description }}</p>
+    
+                    <div class="price-bid-container">
+                        <div class="listing-bid-container">
+                            <span class="listing-price-text">Listing Price:</span>
+                            <span class="listing-price">${{ listing.price|floatformat:"2" }}</span>
+                        </div>
+                        {% if currentBid %}
+                        <div class="listing-bid-container">
+                            <span class="listing-bid-text">Current Bid:</span>
+                            <span class="listing-bid">${{ currentBid.bidPrice|floatformat:"2" }}</span>
+                        </div>
+                        {% else %}
+                        <div class="listing-bid-container">
+                            <span class="listing-bid-text">Current Bid:</span>
+                            <span class="listing-bid">No bid has been placed.</span>
+                        </div>
+                        {% endif %}
+                    </div>
+                </div>
+    
+                <!-- Bids -->
+                {% if user.is_authenticated and listing.isActive %}
+                <form action="{% url 'addBid' id=listing.id %}" method="POST" class="bid-form">
+                    {% csrf_token %}
+                    <div class="bid-input">
+                        <input type="number" min="0" name="bid" placeholder="Enter your bid" class="form-control">
+                    </div>
+                    <div class="bid-button">
+                        <button type="submit" class="btn btn-secondary">Place Bid</button>
+                    </div>
+                </form>
+                {% endif %}
+                
+                <!-- Watchlist Button -->
+                {% if user.is_authenticated and listing.isActive %}
+                    {% if itemInList %}
+                        <form action="{% url 'removeWatchList' id=listing.id %}" method="POST">
+                            {% csrf_token %}
+                            <button type="submit" class="btn watchlist-button">Remove from Watchlist</button>
+                        </form>
+                    {% else %}
+                        <form action="{% url 'addWatchList' id=listing.id %}" method="POST">
+                            {% csrf_token %}
+                            <button type="submit" class="btn watchlist-button">Add To Watchlist</button>
+                        </form>
+                    {% endif %}
+                {% endif %}
+                <!-- Close Auction Button -->
+                {% if isOwner and listing.isActive %}
+                <form action="{% url 'closeAuction' id=listing.id %}" method="POST">
+                    {% csrf_token %}
+                    <button type="submit" class="btn close-auction-button">Close Auction</button>
+                </form>
+                {% endif %}
+                            
+            </div>
+        </div>
+    </div>
+    
+
+    <!-- Bid Alert -->
+    {% if messages %}
+        {% for message in messages %}
+            {% if message.tags == 'success' %}
+                <div class="alert alert-success d-flex align-items-center" role="alert">
+                    <svg class="bi flex-shrink-0 me-2" role="img" aria-label="Success:" width="24" height="24"><use xlink:href="#check-circle-fill"/></svg>
+                    <div>
+                        {{ message }}
+                    </div>
+                </div>
+            {% elif message.tags == 'error' %}
+                <div class="alert alert-danger d-flex align-items-center" role="alert">
+                    <svg class="bi flex-shrink-0 me-2" role="img" aria-label="Error:" width="24" height="24"><use xlink:href="#exclamation-triangle-fill"/></svg>
+                    <div>
+                        {{ message }}
+                    </div>
+                </div>
+            {% endif %}
+        {% endfor %}
+    {% endif %}
+
+    
+    <!-- Winner Alert -->
+    {% if not listing.isActive and user.is_authenticated and user == highestBidder.bidder %}
+        <div class="alert alert-primary d-flex align-items-center" role="alert">
+            <svg class="bi flex-shrink-0 me-2" role="img" aria-label="Success:" width="24" height="24"><use xlink:href="#check-circle-fill"/></svg>
+            <div>
+                Congratulations! You have won the auction!
+            </div>
+        </div>
+    {% endif %}
+
+    <hr>
+    <!-- Comment Section -->
+    <div class="comment-container">
+        <!-- Add Comment -->
+        <div class="comment-input">
+            {% if user.is_authenticated %}
+                <form action="{% url 'addComment' id=listing.id %}" method="POST">
+                    {% csrf_token %}
+                    <div class="my-4">
+                        <textarea name="newComment" class="form-control my-3" id="newComment" placeholder="Add Comment" rows="5"></textarea>
+                        <div class="bid-button">
+                            <button type="submit" class="btn btn-secondary">Comment</button>
+                        </div>
+                    </div>
+                </form>
+            {% endif %}
+        </div>
+        <!-- Comments -->
+        <div class="comment-output">
+            <h3>Comments</h3><br>
+            <ul class="list-group">
+                {% for comment in allComments%}
+                    <div class="comment mt-4 text-justify float-left">
+                        <h4>{{ comment.commenter }}</h4>
+                        <span class="comment-date"></span> <!-- Change ID to class -->
+                        <br>
+                        <p>{{ comment.comment }}</p>
+                    </div>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+    
+    <script>
+        // Loop through each comment and add the date
+        var commentDates = document.querySelectorAll('.comment-date');
+        commentDates.forEach(function(dateElement) {
+            var currentDate = new Date();
+            var options = { year: 'numeric', month: 'long', day: 'numeric' };
+            var formattedDate = currentDate.toLocaleDateString('en-US', options);
+            dateElement.innerText = '- ' + formattedDate;
+        });
+    </script>
+    
+
+
+{% endblock %}
