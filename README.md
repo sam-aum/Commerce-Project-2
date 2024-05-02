@@ -27,7 +27,7 @@ This application is an eBay-like e-commerce auction site that will allow users t
   * If a user is signed in on a closed listing page, and the user has won that auction, the page should say so.
   * Users who are signed in should be able to add comments to the listing page. The listing page should display all comments that have been made on the listing.
 
-![Listing](https://github.com/sam-aum/Commerce-Project-2/assets/95770704/84518720-c3ac-4a65-86b9-ce5ce5883714)
+![Listing](https://github.com/sam-aum/Commerce-Project-2/assets/95770704/2946664f-3fe5-4741-a14f-763695b7919f)
 
 * Watchlist: Users who are signed in should be able to visit a Watchlist page, which should display all of the listings that a user has added to their watchlist. Clicking on any of those listings should take the user to that listing’s page.
   
