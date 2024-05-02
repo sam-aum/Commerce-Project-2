@@ -31,7 +31,7 @@ This application is an eBay-like e-commerce auction site that will allow users t
 
 * Watchlist: Users who are signed in should be able to visit a Watchlist page, which should display all of the listings that a user has added to their watchlist. Clicking on any of those listings should take the user to that listing’s page.
   
-![Watchlist](https://github.com/sam-aum/Commerce-Project-2/assets/95770704/f01ce0bd-79c4-435a-9387-b1bec5ba764c)
+![Watchlist](https://github.com/sam-aum/Commerce-Project-2/assets/95770704/df104266-8e5c-414e-a111-40f1689367e4)
 
 * Categories: Users should be able to visit a page that displays a list of all listing categories. Clicking on the name of any category should take the user to a page that displays all of the active listings in that category.
 
