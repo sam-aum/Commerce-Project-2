@@ -1,6 +1,6 @@
 # CS50W Project-2: Commerce
 
-This is Project 1 in the HarvardX course CS50W - CS50's Web Programming with Python and JavaScript
+This is Project 2 in the HarvardX course CS50W - CS50's Web Programming with Python and JavaScript
 
 [Video Demo](https://youtu.be/FwHufzlC34M)
 
