@@ -329,7 +329,23 @@ h1,h4{
 
 
 
+/* Login and Register */
+.auth-container {
+    max-width: 500px;
+    margin: 60px auto;
+}
 
+.auth-container h2 {
+    margin-bottom: 25px;
+}
+
+.auth-container .form-control {
+    margin-bottom: 15px;
+}
+
+.auth-container button {
+    margin-top: 10px;
+}
 
 
 
